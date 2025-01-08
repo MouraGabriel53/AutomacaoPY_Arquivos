@@ -48,6 +48,5 @@ class Files:
         try:
             pyautogui.alert('Os arquivos foram renomeados com sucesso!')
         except Exception as e:
-            pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}')
-            exit()      
+            pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}')      
         

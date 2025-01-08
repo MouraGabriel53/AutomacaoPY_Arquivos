@@ -20,7 +20,7 @@ class Folders:
         try:
             # Renomeia o diretório padrão
             nomeClienteAntigo = os.path.join(self.diretorioPadraoDestino, 'Cliente')
-            nomeClienteRenomeado = pyautogui.prompt('Por favor, informe o nome do cliente:')
+            nomeClienteRenomeado = pyautogui.prompt('Por favor, informe o nome do Cliente:')
             if not nomeClienteRenomeado:
                 pyautogui.alert('O processo foi interrompido pelo usuário.')
                 return
@@ -29,7 +29,7 @@ class Folders:
 
             # Renomeia o local
             nomeLocalAntigo = os.path.join(nomeClienteRenomeado, 'Local')
-            nomeLocalRenomeado = pyautogui.prompt('Por favor, informe o nome do local:')
+            nomeLocalRenomeado = pyautogui.prompt('Por favor, informe o nome do Local:')
             if not nomeLocalRenomeado:
                 pyautogui.alert('O processo foi interrompido pelo usuário.')
                 return
@@ -38,7 +38,7 @@ class Folders:
 
             # Renomeia a oportunidade
             nomeOportunidadeAntiga = os.path.join(nomeLocalRenomeado, 'Oano_mes_xx_Descrição')
-            nomeOportunidadeRenomeada = pyautogui.prompt('Por favor, informe o nome da oportunidade:')
+            nomeOportunidadeRenomeada = pyautogui.prompt('Por favor, informe o nome da Oportunidade:')
             if not nomeOportunidadeRenomeada:
                 pyautogui.alert('O processo foi interrompido pelo usuário.')
                 return 
