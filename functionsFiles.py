@@ -37,15 +37,15 @@ class Files:
     def copyFiles(self):
         try:          
             os.makedirs(os.path.dirname(self.propostaModeloDestino), exist_ok=True)
-            shutil.copy2(self.propostaModeloOrigem, self.propostaModeloDestino)
-            shutil.copy2(self.planilhaCustosOrigem, self.planilhaCustosDestino)
+            self.nomePropostaModeloAntigo = shutil.copy2(self.propostaModeloOrigem, self.propostaModeloDestino)
+            self.nomePlanilhaCustosAntigo = shutil.copy2(self.planilhaCustosOrigem, self.planilhaCustosDestino)
             pyautogui.alert('Os arquivos foram copiados com sucesso!')
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao copiar os arquivos: {e}')
             exit()
 
     def renameFiles(self):
-        try:
+        try:          
             pyautogui.alert('Os arquivos foram renomeados com sucesso!')
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}')      

@@ -17,8 +17,7 @@ def main():
         diretorioPadraoOrigem, diretorioPadraoDestino = configFolders()
         folders = Folders(diretorioPadraoOrigem, diretorioPadraoDestino)
         folders.copyFolders()
-        caminhoProposta, nomeOportunidadeRenomeada = folders.renameFolders()
-             
+        caminhoProposta, nomeOportunidadeRenomeada = folders.renameFolders()             
         planilhaCustosOrigem = configFiles()
         files = Files(planilhaCustosOrigem, nomeOportunidadeRenomeada, caminhoProposta)
         files.selectFiles() 
@@ -27,16 +26,6 @@ def main():
         pyautogui.alert('Processo concluído com sucesso!')    
     elif resposta == "Não":
         exit()
-        diretorioPadraoOrigem, diretorioPadraoDestino = configFolders()
-        client = Folders(diretorioPadraoOrigem, diretorioPadraoDestino)
-        client.search()
-        client.addLocal()
-        
-        planilhaCustosOrigem, planilhaCustosDestino = configFiles()
-        files = Files(planilhaCustosOrigem, planilhaCustosDestino, client)
-        client.copyFiles()
-        client.renameFiles()
-        pyautogui.alert('Processo concluído com sucesso!')
     else:
         pyautogui.alert('Processo interrompido!')
         exit()
