@@ -3,9 +3,9 @@ import os
 import shutil
 
 class Files:
-    def __init__(self, planilhaCustosOrigem, nomeOportunidadeRenomeada, caminhoProposta):
+    def __init__(self, planilhaCustosOrigem, nomeDiretórioOportunidadadeRenomeada, caminhoProposta):
         self.planilhaCustosOrigem = planilhaCustosOrigem
-        self.nomeOportunidadeRenomeada = nomeOportunidadeRenomeada
+        self.nomeDiretórioOportunidadeRenomeada = nomeDiretórioOportunidadadeRenomeada
         self.planilhaCustosDestino = caminhoProposta
         self.propostaModeloDestino = caminhoProposta
         self.caminhoProposta = caminhoProposta   
@@ -14,7 +14,7 @@ class Files:
         try: 
             tipoProposta = pyautogui.prompt(
                 'Por favor, informe o tipo da proposta:\n[1] Assistência Técnica\n[2] Automação Básica\n[3] Automação Completa\n[4] Painéis\n[5] Revenda\n[6] TI:', 
-                'Tipo Proposta'
+                '❓ Tipo Proposta'
             ) 
             
             match tipoProposta:
@@ -48,8 +48,12 @@ class Files:
             exit()
 
     def renameFiles(self):
-        try:          
+        try:  
+            nomePropostaModeloRenomeada = os.path.join(self.caminhoProposta, f'{self.nomeDiretórioOportunidadeRenomeada} rev0.0.docx')
+            os.rename(self.nomePropostaModeloAntigo, nomePropostaModeloRenomeada)
+            nomePlanilhaCustosRenomeada = os.path.join(self.caminhoProposta, f'{self.nomeDiretórioOportunidadeRenomeada} rev0.0.xlsx') 
+            os.rename(self.nomePlanilhaCustosAntigo, nomePlanilhaCustosRenomeada)      
             pyautogui.alert('Os arquivos foram renomeados com sucesso!', '✅ Concluído')
         except Exception as e:
-            pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}', '❌ Erro')      
+            pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}', '❌ Erro') 
         

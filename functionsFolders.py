@@ -20,7 +20,7 @@ class Folders:
         try:
             # Renomeia o diretório padrão
             nomeClienteAntigo = os.path.join(self.diretorioPadraoDestino, 'Cliente')
-            nomeClienteRenomeado = pyautogui.prompt('Por favor, informe o nome do Cliente:', 'Nome Cliente')
+            nomeClienteRenomeado = pyautogui.prompt('Por favor, informe o nome do Cliente:', '❓ Nome Cliente')
             if not nomeClienteRenomeado:
                 pyautogui.alert('O processo foi interrompido pelo usuário.', '❌ Erro')
                 return
@@ -29,7 +29,7 @@ class Folders:
 
             # Renomeia o local
             nomeLocalAntigo = os.path.join(nomeClienteRenomeado, 'Local')
-            nomeLocalRenomeado = pyautogui.prompt('Por favor, informe o nome do Local:', 'Nome Local')
+            nomeLocalRenomeado = pyautogui.prompt('Por favor, informe o nome do Local:', '❓ Nome Local')
             if not nomeLocalRenomeado:
                 pyautogui.alert('O processo foi interrompido pelo usuário.', '❌ Erro')
                 return
@@ -38,7 +38,8 @@ class Folders:
 
             # Renomeia a oportunidade
             nomeOportunidadeAntiga = os.path.join(nomeLocalRenomeado, 'Oano_mes_xx_Descrição')
-            nomeOportunidadeRenomeada = pyautogui.prompt('Por favor, informe o nome da Oportunidade:', 'Nome Oportunidade')
+            nomeOportunidadeRenomeada = pyautogui.prompt('Por favor, informe o nome da Oportunidade:', '❓ Nome Oportunidade')
+            nomeDiretórioOportunidadadeRenomeada = nomeOportunidadeRenomeada
             if not nomeOportunidadeRenomeada:
                 pyautogui.alert('O processo foi interrompido pelo usuário.', '❌ Erro')
                 return 
@@ -47,7 +48,7 @@ class Folders:
             pyautogui.alert('As pastas foram renomeadas com sucesso!', '✅ Concluído') 
             
             caminhoProposta = os.path.join(self.diretorioPadraoDestino, nomeClienteRenomeado, nomeLocalRenomeado, nomeOportunidadeRenomeada, 'Proposta')
-            return caminhoProposta, nomeOportunidadeRenomeada                   
+            return caminhoProposta, nomeDiretórioOportunidadadeRenomeada                   
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao renomear os diretórios: {e}', '❌ Erro')
             exit()                    
