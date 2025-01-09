@@ -12,7 +12,10 @@ class Files:
         
     def selectFiles(self):
         try: 
-            tipoProposta = pyautogui.prompt('Por favor, informe o tipo da proposta:\n[1] Assistência Técnica\n[2] Automação Básica\n[3] Automação Completa\n[4] Painéis\n[5] Revenda\n[6] TI:') 
+            tipoProposta = pyautogui.prompt(
+                'Por favor, informe o tipo da proposta:\n[1] Assistência Técnica\n[2] Automação Básica\n[3] Automação Completa\n[4] Painéis\n[5] Revenda\n[6] TI:', 
+                'Tipo Proposta'
+            ) 
             
             match tipoProposta:
                 case '1':
@@ -28,10 +31,10 @@ class Files:
                 case '6':
                     self.propostaModeloOrigem = r'\\192.168.1.4\Comercial\Proposta 2025\A_Proposta Modelo\PROPOSTA - 2025\Proposta - Padrão TI - 20.12.2024.docx'
                 case _:
-                    pyautogui.alert('Tipo de proposta inválido. O processo foi interrompido.')
+                    pyautogui.alert('Tipo de proposta inválido. O processo foi interrompido.', '❌ Erro')
                     exit()
         except Exception as e:
-            pyautogui.alert(f'Ocorreu um erro ao selecionar os arquivos: {e}')
+            pyautogui.alert(f'Ocorreu um erro ao selecionar os arquivos: {e}', '❌ Erro')
             exit()
             
     def copyFiles(self):
@@ -39,14 +42,14 @@ class Files:
             os.makedirs(os.path.dirname(self.propostaModeloDestino), exist_ok=True)
             self.nomePropostaModeloAntigo = shutil.copy2(self.propostaModeloOrigem, self.propostaModeloDestino)
             self.nomePlanilhaCustosAntigo = shutil.copy2(self.planilhaCustosOrigem, self.planilhaCustosDestino)
-            pyautogui.alert('Os arquivos foram copiados com sucesso!')
+            pyautogui.alert('Os arquivos foram copiados com sucesso!', '✅ Concluído')
         except Exception as e:
-            pyautogui.alert(f'Ocorreu um erro ao copiar os arquivos: {e}')
+            pyautogui.alert(f'Ocorreu um erro ao copiar os arquivos: {e}', '❌ Erro')
             exit()
 
     def renameFiles(self):
         try:          
-            pyautogui.alert('Os arquivos foram renomeados com sucesso!')
+            pyautogui.alert('Os arquivos foram renomeados com sucesso!', '✅ Concluído')
         except Exception as e:
-            pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}')      
+            pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}', '❌ Erro')      
         

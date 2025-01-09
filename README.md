@@ -1,13 +1,31 @@
-# Descrição do Projeto
+# 📂 Automação de Tarefas com Python
 
-Este projeto está sendo desenvolvido para automatizar tarefas repetitivas relacionadas à criação de pastas, cópia e movimentação de arquivos. O objetivo principal é organizar arquivos de clientes em pastas específicas, facilitando o armazenamento e o gerenciamento de cotações. A automação reduz o tempo gasto em tarefas manuais e minimiza erros humanos no processo.
+Este projeto visa automatizar tarefas repetitivas utilizando Python, facilitando a criação de pastas, a cópia e movimentação de arquivos, e a interação com a interface gráfica do usuário. A automação busca otimizar o tempo e reduzir erros humanos, especialmente no gerenciamento de arquivos de clientes e cotações.
 
-## Funcionalidades
+## Índice
+<p align="center">
+    <a href="#-descrição-do-projeto">Descrição do Projeto</a> |
+    <a href="#-funcionalidades">Funcionalidades</a> |
+    <a href="#-bibliotecas-utilizadas">Bibliotecas Utilizadas</a>
+</p>
 
-- **Criação automática de pastas**: Gera pastas com base nos nomes dos clientes ou outros critérios definidos.
+## 📂 Descrição do Projeto
 
-- **Cópia e movimentação de arquivos**: Copia arquivos para as pastas correspondentes ou move-os diretamente.
+Este projeto está sendo desenvolvido para automatizar tarefas repetitivas relacionadas à criação de pastas, cópia e movimentação de arquivos, além de interações com a interface gráfica do usuário. O objetivo principal é organizar arquivos de clientes em pastas específicas, facilitando o armazenamento e o gerenciamento de cotações. A automação reduz o tempo gasto em tarefas manuais e minimiza erros humanos no processo.
 
-- **Personalização**: Permite configurar os caminhos das pastas de origem e destino.
+## ⚙️ Funcionalidades
 
-- **Logs**: Registra as operações realizadas para facilitar o acompanhamento e a auditoria.
+- **📁 Criação automática de pastas**: Gera pastas com base nos nomes dos clientes ou outros critérios definidos.
+- **📄 Cópia e movimentação de arquivos**: Copia arquivos para as pastas correspondentes ou move-os diretamente.
+- **🖱️ Interação com a interface gráfica**: Automatiza cliques e digitação para interagir com aplicativos e sistemas.
+- **🔧 Personalização**: Permite configurar os caminhos das pastas de origem e destino.
+- **📝 Logs**: Registra as operações realizadas para facilitar o acompanhamento e a auditoria.
+
+## 📚 Bibliotecas Utilizadas
+
+- **os**: Utilizada para interagir com o sistema operacional, permitindo a criação de pastas e a movimentação de arquivos.
+- **shutil**: Fornece uma interface de alto nível para operações de cópia e movimentação de arquivos.
+- **pyautogui**: Utilizada para automatizar interações com a interface gráfica do usuário, como cliques e digitação.
+- **logging**: Utilizada para registrar logs das operações realizadas, facilitando o acompanhamento e a auditoria do processo.
+
+Essas bibliotecas foram escolhidas por serem parte da biblioteca padrão do Python (exceto pyautogui), o que elimina a necessidade de instalar muitas dependências externas e simplifica a implementação do projeto.

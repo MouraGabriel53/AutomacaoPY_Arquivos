@@ -12,7 +12,7 @@ def configFiles():
     return planilhaCustosOrigem
 
 def main():
-    resposta = pyautogui.confirm('Deseja adicionar um novo Cliente?', buttons=['Sim', 'Não'])    
+    resposta = pyautogui.confirm('Deseja adicionar um novo Cliente?', '➕ Adicionar cliente', buttons=['Sim', 'Não'])    
     if resposta == "Sim":
         diretorioPadraoOrigem, diretorioPadraoDestino = configFolders()
         folders = Folders(diretorioPadraoOrigem, diretorioPadraoDestino)
@@ -23,11 +23,11 @@ def main():
         files.selectFiles() 
         files.copyFiles()
         files.renameFiles()
-        pyautogui.alert('Processo concluído com sucesso!')    
+        pyautogui.alert('Processo concluído com sucesso!', '✅ Concluído')    
     elif resposta == "Não":
         exit()
     else:
-        pyautogui.alert('Processo interrompido!')
+        pyautogui.alert('Processo interrompido!', '❌ Erro')
         exit()
 
 if __name__ == '__main__': 
