@@ -11,31 +11,35 @@ class FoldersAdd:
     def nameClientList(self):
         try:
             if not os.path.exists(self.diretorioPadraoDestino):
-                print(f"O diretório {self.diretorioPadraoDestino} não foi encontrado.")
+                pyautogui.alert(f"O diretório {self.diretorioPadraoDestino} não foi encontrado.", '❌ Erro')
                 return
 
             itens = os.listdir(self.diretorioPadraoDestino)
             self.diretorioPadraoDestinos = [item for item in itens if os.path.isdir(os.path.join(self.diretorioPadraoDestino, item))]
             if not self.diretorioPadraoDestinos:
-                print("Nenhum diretório encontrado.")
+                pyautogui.alert("Nenhum diretório encontrado.", '❌ Erro')
                 return
 
             self.diretorioPadraoDestinos_enumeradas = [f"[{i+1}] {item}" for i, item in enumerate(self.diretorioPadraoDestinos)]
-            escolha = pyautogui.prompt('Escolha o Cliente:\n' + '\n'.join(self.diretorioPadraoDestinos_enumeradas))
+            escolha = pyautogui.prompt('Escolha o Cliente:\n' + '\n'.join(self.diretorioPadraoDestinos_enumeradas), '❓ Nome Cliente')
             
             if escolha and escolha.isdigit():
                 indice = int(escolha) - 1
                 if 0 <= indice < len(self.diretorioPadraoDestinos):
                     self.caminhoClienteSelecionado = os.path.join(self.diretorioPadraoDestino, self.diretorioPadraoDestinos[indice])
-                    print(f"Caminho selecionado: {self.caminhoClienteSelecionado}")
+                    #print(f"Caminho selecionado: {self.caminhoClienteSelecionado}")
                 else:
-                    print("Escolha inválida.")
+                    pyautogui.alert("Escolha inválida.", '❌ Erro')
+                    exit()
             else:
-                print("Escolha inválida.")
+                pyautogui.alert("Escolha inválida.", '❌ Erro')
+                exit()
         except FileNotFoundError:
-            print(f"O diretório {self.diretorioPadraoDestino} não foi encontrado.")
+            pyautogui.alert(f"O diretório {self.diretorioPadraoDestino} não foi encontrado.", '❌ Erro')
+            exit()
         except Exception as e:
-            print(f"Ocorreu um erro: {e}")
+            pyautogui.alert(f"Ocorreu um erro: {e}", '❌ Erro')
+            exit()
             
     def addLocal(self):
         try:

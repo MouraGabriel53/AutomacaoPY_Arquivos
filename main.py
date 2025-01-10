@@ -31,6 +31,7 @@ def main():
         diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem = configFolders()
         folders = FoldersAdd(diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem)
         folders.nameClientList()
+        
         respostaAddLocal = pyautogui.confirm('Deseja adicionar um novo Local?', '➕ Adicionar Local', buttons=['Sim', 'Não'])
         if not respostaAddLocal:
             pyautogui.alert('O processo foi interrompido pelo usuário.', '❌ Erro')
@@ -42,12 +43,13 @@ def main():
             files = FilesAdd(planilhaCustosOrigem, caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho)
             files.selectFilesAdd()
             files.copyFilesAdd()
-            files.renameFilesAdd()            
-        else:
+            files.renameFilesAdd()
+        if respostaAddLocal == 'Não':
+            #serachlocal
+            #selectfile
+            #copyfile
+            #renamefile
             exit()
-    else:
-        pyautogui.alert('Processo interrompido!', '❌ Erro')
-        exit()
-
+            
 if __name__ == '__main__': 
     main()
