@@ -29,7 +29,8 @@ def main():
         files.selectFiles() 
         files.copyFiles()
         files.renameFiles()
-        pyautogui.alert('Processo concluído com sucesso!', '✅ Concluído')    
+        pyautogui.alert('Processo concluído com sucesso!', '✅ Concluído') 
+        exit()   
     elif resposta == "Não":
         diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem = configFolders()
         folders = FoldersAdd(diretorioPadraoDestino, diretorioPadraoLocalOrigem)
@@ -45,7 +46,9 @@ def main():
             files = FilesAdd(planilhaCustosOrigem, caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho)
             files.selectFilesAdd()
             files.copyFilesAdd()
-            files.renameFilesAdd()           
+            files.renameFilesAdd()
+            pyautogui.alert('Processo concluído com sucesso!', '✅ Concluído') 
+            exit()           
         if respostaAddLocal == 'Não':         
             folders = FoldersExistingLocal(caminhoClienteSelecionado, diretorioPadraoOportunidadeOrigem)
             folders.getLocalName()
@@ -56,6 +59,7 @@ def main():
             files.selectFilesLocal()
             files.copyFilesLocal()
             files.renameFilesLocal()
+            pyautogui.alert('Processo concluído com sucesso!', '✅ Concluído') 
             exit()
             
 if __name__ == '__main__': 
