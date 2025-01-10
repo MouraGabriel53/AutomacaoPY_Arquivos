@@ -31,15 +31,14 @@ class FoldersExistingLocal():
                         pyautogui.alert("Escolha inválida.", '❌ Erro')
                         return None
                     
-                caminhoLocalSelecionado = os.path.join(self.caminhoClienteSelecionado, self.localName)
-                return caminhoLocalSelecionado
+                self.caminhoClienteLocalSelecionado = os.path.join(self.caminhoClienteSelecionado, self.localName)
             except Exception as e:
                 pyautogui.alert(f"Ocorreu um erro ao buscar o nome do local: {e}", '❌ Erro')
                 exit()
                 
     def addOportunity(self):
         try:
-            self.caminhoOportunidadeAdicionada = shutil.copytree(self.diretorioPadraoOportunidadeOrigem, self.caminhoClienteSelecionado, dirs_exist_ok=True)   
+            self.caminhoOportunidadeAdicionada = shutil.copytree(self.diretorioPadraoOportunidadeOrigem, self.caminhoClienteLocalSelecionado, dirs_exist_ok=True)   
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao buscar os diretórios: {e}', '❌ Erro')
             exit()
@@ -56,7 +55,7 @@ class FoldersExistingLocal():
             nomeOportunidadeAddRenomeada = os.path.join(self.caminhoOportunidadeAdicionada, nomeOportunidadeAddRenomeada)
             os.rename(nomeOportunidadeAddAntiga, nomeOportunidadeAddRenomeada)
             #pyautogui.alert('As self.diretorioPadraoDestinos foram renomeadas com sucesso!', '✅ Concluído')
-            caminhoPropostaAddLocal = os.path.join(self.caminhoClienteSelecionado, self.caminhoOportunidadeAdicionada, nomeOportunidadeAddRenomeada, 'Proposta')
+            caminhoPropostaAddLocal = os.path.join(self.caminhoClienteLocalSelecionado, nomeOportunidadeAddRenomeada, 'Proposta')
             return caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho
             
         except Exception as e:

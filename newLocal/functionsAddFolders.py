@@ -3,11 +3,10 @@ import os
 import shutil
 
 class FoldersAdd:
-    def __init__(self, diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem):
-        self.diretorioPadraoOrigem = diretorioPadraoOrigem
+    def __init__(self, diretorioPadraoDestino, diretorioPadraoLocalOrigem):
         self.diretorioPadraoDestino = diretorioPadraoDestino
         self.diretorioPadraoLocalOrigem = diretorioPadraoLocalOrigem
-        self.diretorioPadraoOportunidadeOrigem = diretorioPadraoOportunidadeOrigem
+        
         
     def nameClientList(self):
         try:

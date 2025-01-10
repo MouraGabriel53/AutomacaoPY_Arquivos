@@ -20,8 +20,8 @@ def configFiles():
 def main():
     resposta = pyautogui.confirm('Deseja adicionar um novo Cliente?', '➕ Adicionar cliente', buttons=['Sim', 'Não'])    
     if resposta == "Sim":
-        diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem = configFolders()
-        folders = Folders(diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem)
+        diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem = configFolders()
+        folders = Folders(diretorioPadraoOrigem, diretorioPadraoDestino)
         folders.copyFolders()
         caminhoProposta, nomeDiretórioOportunidadadeRenomeada = folders.renameFolders()             
         planilhaCustosOrigem = configFiles()
@@ -32,9 +32,9 @@ def main():
         pyautogui.alert('Processo concluído com sucesso!', '✅ Concluído')    
     elif resposta == "Não":
         diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem = configFolders()
-        folders = FoldersAdd(diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem)
+        folders = FoldersAdd(diretorioPadraoDestino, diretorioPadraoLocalOrigem)
         caminhoClienteSelecionado = folders.nameClientList()
-        
+                
         respostaAddLocal = pyautogui.confirm('Deseja adicionar um novo Local?', '➕ Adicionar Local', buttons=['Sim', 'Não'])
         if not respostaAddLocal:
             pyautogui.alert('O processo foi interrompido pelo usuário.', '❌ Erro')
@@ -47,12 +47,16 @@ def main():
             files.selectFilesAdd()
             files.copyFilesAdd()
             files.renameFilesAdd()
-        if respostaAddLocal == 'Não':            
+        if respostaAddLocal == 'Não':
+            exit()           
             folders = FoldersExistingLocal(caminhoClienteSelecionado, diretorioPadraoOportunidadeOrigem)
-            caminhoLocalSelecionado = folders.getLocalName()
+            folders.getLocalName()
+            folders.addOportunity()
+            caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho = folders.renameOportunity()
             planilhaCustosOrigem = configFiles()
-            files = FilesExistingLocal(planilhaCustosOrigem, caminhoLocalSelecionado)
-            files.selectFilesAdd()
+            files = FilesExistingLocal(planilhaCustosOrigem, caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho)
+            files.selectFilesLocal()
+            exit()
             files.copyFilesLocal()
             files.renameFilesLocal()
             exit()

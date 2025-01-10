@@ -3,12 +3,12 @@ import os
 import shutil
 
 class FilesExistingLocal:
-    def __init__(self, planilhaCustosOrigem, caminhoLocalSelecionado, nomeOportunidadeAddRenomeadaSemCaminho):
+    def __init__(self, planilhaCustosOrigem, caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho):
         self.planilhaCustosOrigem = planilhaCustosOrigem
-        self.caminhoLocalSelecionado = caminhoLocalSelecionado
+        self.caminhoPropostaAddLocal = caminhoPropostaAddLocal
         self.nomeOportunidadeAddRenomeadaSemCaminho = nomeOportunidadeAddRenomeadaSemCaminho
         
-    def selectFilesAdd(self):
+    def selectFilesLocal(self):
         try: 
             tipoProposta = pyautogui.prompt(
                 'Por favor, informe o tipo da proposta:\n[1] Assistência Técnica\n[2] Automação Básica\n[3] Automação Completa\n[4] Painéis\n[5] Revenda\n[6] TI', 
@@ -40,7 +40,7 @@ class FilesExistingLocal:
             
     def copyFilesLocal(self):
         try:          
-            os.makedirs(self.caminhoLocalSelecionado, exist_ok=True)
+            os.makedirs(os.path.dirname(self.caminhoLocalSelecionado), exist_ok=True)
             self.nomePropostaModeloAntigoAdd = shutil.copy2(self.propostaModeloOrigem, self.caminhoLocalSelecionado)
             self.nomePlanilhaCustosAntigoAdd = shutil.copy2(self.planilhaCustosOrigem, self.caminhoLocalSelecionado)
             #pyautogui.alert('Os arquivos foram copiados com sucesso!', '✅ Concluído')

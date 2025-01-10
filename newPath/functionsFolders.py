@@ -4,7 +4,7 @@ import shutil
 
 class Folders:
     
-    def __init__(self, diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem):
+    def __init__(self, diretorioPadraoOrigem, diretorioPadraoDestino):
         self.diretorioPadraoOrigem = diretorioPadraoOrigem
         self.diretorioPadraoDestino = diretorioPadraoDestino
         
