@@ -1,14 +1,17 @@
 import pyautogui
-from functionsFiles import Files
-from functionsFolders import Folders
-from functionsAddFiles import FilesAdd
-from functionsAddFolders import FoldersAdd
+from newPath.functionsFiles import Files
+from newPath.functionsFolders import Folders
+from newLocal.functionsAddFiles import FilesAdd
+from newLocal.functionsAddFolders import FoldersAdd
+from existingLocal.functionAddFilesLocal import FilesExistingLocal
+from existingLocal.functionsAddFoldersLocal import FoldersExistingLocal
 
 def configFolders():
     diretorioPadraoOrigem = r'\\192.168.1.4\Comercial\Proposta 2025\A_Diretório Padrão'
     diretorioPadraoDestino = r'\\192.168.1.4\Comercial\Proposta 2025'
     diretorioPadraoLocalOrigem = r'\\192.168.1.4\Comercial\Proposta 2025\A_Diretório Padrão\Cliente'
-    return diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem
+    diretorioPadraoOportunidadeOrigem = r'\\192.168.1.4\Comercial\Proposta 2025\A_Diretório Padrão\Cliente\Local'
+    return diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem
 
 def configFiles():
     planilhaCustosOrigem = r'\\192.168.1.4\Comercial\Proposta 2025\A_Planilha Venda\Planilha de Calculo\FGI 08A - Planilha de Custos rev02 - Lucro Real.xlsx'
@@ -28,9 +31,9 @@ def main():
         files.renameFiles()
         pyautogui.alert('Processo concluído com sucesso!', '✅ Concluído')    
     elif resposta == "Não":
-        diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem = configFolders()
-        folders = FoldersAdd(diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem)
-        folders.nameClientList()
+        diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem = configFolders()
+        folders = FoldersAdd(diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem)
+        caminhoClienteSelecionado = folders.nameClientList()
         
         respostaAddLocal = pyautogui.confirm('Deseja adicionar um novo Local?', '➕ Adicionar Local', buttons=['Sim', 'Não'])
         if not respostaAddLocal:
@@ -44,11 +47,14 @@ def main():
             files.selectFilesAdd()
             files.copyFilesAdd()
             files.renameFilesAdd()
-        if respostaAddLocal == 'Não':
-            #serachlocal
-            #selectfile
-            #copyfile
-            #renamefile
+        if respostaAddLocal == 'Não':            
+            folders = FoldersExistingLocal(caminhoClienteSelecionado, diretorioPadraoOportunidadeOrigem)
+            caminhoLocalSelecionado = folders.getLocalName()
+            planilhaCustosOrigem = configFiles()
+            files = FilesExistingLocal(planilhaCustosOrigem, caminhoLocalSelecionado)
+            files.selectFilesAdd()
+            files.copyFilesLocal()
+            files.renameFilesLocal()
             exit()
             
 if __name__ == '__main__': 

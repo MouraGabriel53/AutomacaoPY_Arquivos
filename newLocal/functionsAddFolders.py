@@ -3,10 +3,11 @@ import os
 import shutil
 
 class FoldersAdd:
-    def __init__(self, diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem):
+    def __init__(self, diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem):
         self.diretorioPadraoOrigem = diretorioPadraoOrigem
         self.diretorioPadraoDestino = diretorioPadraoDestino
         self.diretorioPadraoLocalOrigem = diretorioPadraoLocalOrigem
+        self.diretorioPadraoOportunidadeOrigem = diretorioPadraoOportunidadeOrigem
         
     def nameClientList(self):
         try:
@@ -28,6 +29,8 @@ class FoldersAdd:
                 if 0 <= indice < len(self.diretorioPadraoDestinos):
                     self.caminhoClienteSelecionado = os.path.join(self.diretorioPadraoDestino, self.diretorioPadraoDestinos[indice])
                     #print(f"Caminho selecionado: {self.caminhoClienteSelecionado}")
+                    caminhoClienteSelecionado = self.caminhoClienteSelecionado
+                    return caminhoClienteSelecionado
                 else:
                     pyautogui.alert("Escolha inválida.", '❌ Erro')
                     exit()
@@ -74,4 +77,5 @@ class FoldersAdd:
         
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao renomear os diretórios: {e}', '❌ Erro')
-            exit()               
+            exit() 
+                      
