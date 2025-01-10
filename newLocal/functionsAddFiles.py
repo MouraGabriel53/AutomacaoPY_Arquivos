@@ -39,7 +39,9 @@ class FilesAdd:
             exit()
     
     def copyFilesAdd(self):
-        try:     
+        try: 
+            if not os.path.exists(self.propostaModeloOrigem) or not os.path.exists(self.planilhaCustosOrigem):
+                raise FileNotFoundError("Arquivos de origem não encontrados.")    
             os.makedirs(os.path.dirname(self.caminhoPropostaAddLocal), exist_ok=True)
             self.nomePropostaModeloAntigoAdd = shutil.copy2(self.propostaModeloOrigem, self.caminhoPropostaAddLocal)
             self.nomePlanilhaCustosAntigoAdd = shutil.copy2(self.planilhaCustosOrigem, self.caminhoPropostaAddLocal)

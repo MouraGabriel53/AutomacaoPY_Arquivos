@@ -41,7 +41,9 @@ class Files:
             exit()
             
     def copyFiles(self):
-        try:          
+        try:   
+            if not os.path.exists(self.propostaModeloOrigem) or not os.path.exists(self.planilhaCustosOrigem):
+                raise FileNotFoundError("Arquivos de origem não encontrados.")       
             os.makedirs(os.path.dirname(self.propostaModeloDestino), exist_ok=True)
             self.nomePropostaModeloAntigo = shutil.copy2(self.propostaModeloOrigem, self.propostaModeloDestino)
             self.nomePlanilhaCustosAntigo = shutil.copy2(self.planilhaCustosOrigem, self.planilhaCustosDestino)
@@ -51,7 +53,7 @@ class Files:
             exit()
 
     def renameFiles(self):
-        try:  
+        try: 
             nomePropostaModeloRenomeada = os.path.join(self.caminhoProposta, f'{self.nomeDiretórioOportunidadeRenomeada} rev0.0.docx')
             os.rename(self.nomePropostaModeloAntigo, nomePropostaModeloRenomeada)
             nomePlanilhaCustosRenomeada = os.path.join(self.caminhoProposta, f'{self.nomeDiretórioOportunidadeRenomeada} rev0.0.xlsx') 

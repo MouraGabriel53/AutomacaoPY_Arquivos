@@ -10,6 +10,12 @@ class Folders:
         
     def copyFolders(self):
         try:
+            if not os.path.exists(self.diretorioPadraoOrigem):
+                pyautogui.alert(f'O diretório de origem {self.diretorioPadraoOrigem} não existe.', '❌ Erro')
+                GeneratorExit()
+            if not os.path.exists(self.diretorioPadraoDestino):
+                os.makedirs(self.diretorioPadraoDestino)
+                exit()
             shutil.copytree(self.diretorioPadraoOrigem, self.diretorioPadraoDestino, dirs_exist_ok=True)
             #pyautogui.alert('Os diretórios foram copiados com sucesso!', '✅ Concluído')
         except Exception as e:
@@ -18,7 +24,13 @@ class Folders:
 
     def renameFolders(self):
         try:
-            # Renomeia o diretório padrão
+            if not os.path.exists(self.diretorioPadraoDestino):
+                pyautogui.alert(f'O diretório de destino {self.diretorioPadraoDestino} não existe.', '❌ Erro')
+                exit()
+            if not os.path.exists(self.diretorioPadraoOrigem):
+                pyautogui.alert(f'O diretório de origem {self.diretorioPadraoOrigem} não existe.', '❌ Erro')
+                exit()                
+            # Renomeia o Cliente    
             nomeClienteAntigo = os.path.join(self.diretorioPadraoDestino, 'Cliente')
             nomeClienteRenomeado = pyautogui.prompt('Por favor, informe o nome do Cliente:', '❓ Nome Cliente')
             if not nomeClienteRenomeado:

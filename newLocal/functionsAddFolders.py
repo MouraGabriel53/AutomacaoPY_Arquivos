@@ -45,6 +45,10 @@ class FoldersAdd:
             
     def addLocal(self):
         try:
+            caminhoClienteSelecionado = self.nameClientList()
+            if not caminhoClienteSelecionado:
+                pyautogui.alert('Nenhum caminho de cliente selecionado.', '❌ Erro')
+                exit()
             shutil.copytree(self.diretorioPadraoLocalOrigem, self.caminhoClienteSelecionado, dirs_exist_ok=True)   
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao buscar os diretórios: {e}', '❌ Erro')
@@ -52,6 +56,9 @@ class FoldersAdd:
             
     def renameAddLocalAndOportunity(self):
         try:
+            if not hasattr(self, 'caminhoClienteSelecionado') or not os.path.exists(self.caminhoClienteSelecionado):
+                pyautogui.alert('Caminho do cliente selecionado não é válido ou não existe.', '❌ Erro')
+                exit()
             # Renomeia o local 
             nomeLocalAddAntigo = os.path.join(self.caminhoClienteSelecionado, 'Local')
             nomeLocalAddRenomeado = pyautogui.prompt('Por favor, informe o nome do Local:', '❓ Nome Local')
