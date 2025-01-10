@@ -2,15 +2,13 @@ import pyautogui
 import os
 import shutil
 
-class Files:
-    def __init__(self, planilhaCustosOrigem, nomeDiretórioOportunidadadeRenomeada, caminhoProposta):
+class FilesAdd:
+    def __init__(self, planilhaCustosOrigem, caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho):
         self.planilhaCustosOrigem = planilhaCustosOrigem
-        self.nomeDiretórioOportunidadeRenomeada = nomeDiretórioOportunidadadeRenomeada
-        self.planilhaCustosDestino = caminhoProposta
-        self.propostaModeloDestino = caminhoProposta
-        self.caminhoProposta = caminhoProposta
-                
-    def selectFiles(self):
+        self.caminhoPropostaAddLocal = caminhoPropostaAddLocal
+        self.nomeOportunidadeAddRenomeadaSemCaminho = nomeOportunidadeAddRenomeadaSemCaminho
+        
+    def selectFilesAdd(self):
         try: 
             tipoProposta = pyautogui.prompt(
                 'Por favor, informe o tipo da proposta:\n[1] Assistência Técnica\n[2] Automação Básica\n[3] Automação Completa\n[4] Painéis\n[5] Revenda\n[6] TI', 
@@ -39,26 +37,24 @@ class Files:
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao selecionar os arquivos: {e}', '❌ Erro')
             exit()
-            
-    def copyFiles(self):
+    
+    def copyFilesAdd(self):
         try:          
-            os.makedirs(os.path.dirname(self.propostaModeloDestino), exist_ok=True)
-            self.nomePropostaModeloAntigo = shutil.copy2(self.propostaModeloOrigem, self.propostaModeloDestino)
-            self.nomePlanilhaCustosAntigo = shutil.copy2(self.planilhaCustosOrigem, self.planilhaCustosDestino)
+            os.makedirs(os.path.dirname(self.caminhoPropostaAddLocal), exist_ok=True)
+            self.nomePropostaModeloAntigoAdd = shutil.copy2(self.propostaModeloOrigem, self.caminhoPropostaAddLocal)
+            self.nomePlanilhaCustosAntigoAdd = shutil.copy2(self.planilhaCustosOrigem, self.caminhoPropostaAddLocal)
             #pyautogui.alert('Os arquivos foram copiados com sucesso!', '✅ Concluído')
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao copiar os arquivos: {e}', '❌ Erro')
             exit()
 
-    def renameFiles(self):
+    def renameFilesAdd(self):
         try:  
-            nomePropostaModeloRenomeada = os.path.join(self.caminhoProposta, f'{self.nomeDiretórioOportunidadeRenomeada} rev0.0.docx')
-            os.rename(self.nomePropostaModeloAntigo, nomePropostaModeloRenomeada)
-            nomePlanilhaCustosRenomeada = os.path.join(self.caminhoProposta, f'{self.nomeDiretórioOportunidadeRenomeada} rev0.0.xlsx') 
-            os.rename(self.nomePlanilhaCustosAntigo, nomePlanilhaCustosRenomeada)      
+            nomePropostaModeloRenomeadaAdd = os.path.join(self.caminhoPropostaAddLocal, f'{self.nomeOportunidadeAddRenomeadaSemCaminho} rev0.0.docx')
+            os.rename(self.nomePropostaModeloAntigoAdd, nomePropostaModeloRenomeadaAdd)
+            nomePlanilhaCustosRenomeadaAdd = os.path.join(self.caminhoPropostaAddLocal, f'{self.nomeOportunidadeAddRenomeadaSemCaminho} rev0.0.xlsx') 
+            os.rename(self.nomePlanilhaCustosAntigoAdd, nomePlanilhaCustosRenomeadaAdd)      
             #pyautogui.alert('Os arquivos foram renomeados com sucesso!', '✅ Concluído')
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}', '❌ Erro')
-            exit() 
-    
-    
+            exit()

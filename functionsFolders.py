@@ -4,14 +4,14 @@ import shutil
 
 class Folders:
     
-    def __init__(self, diretorioPadraoOrigem, diretorioPadraoDestino):
+    def __init__(self, diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem):
         self.diretorioPadraoOrigem = diretorioPadraoOrigem
         self.diretorioPadraoDestino = diretorioPadraoDestino
-
+        
     def copyFolders(self):
         try:
             shutil.copytree(self.diretorioPadraoOrigem, self.diretorioPadraoDestino, dirs_exist_ok=True)
-            pyautogui.alert('Os diretórios foram copiados com sucesso!', '✅ Concluído')
+            #pyautogui.alert('Os diretórios foram copiados com sucesso!', '✅ Concluído')
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao copiar os diretórios: {e}', '❌ Erro')
             exit()
@@ -45,10 +45,12 @@ class Folders:
                 return 
             nomeOportunidadeRenomeada = os.path.join(nomeLocalRenomeado, nomeOportunidadeRenomeada)
             os.rename(nomeOportunidadeAntiga, nomeOportunidadeRenomeada)           
-            pyautogui.alert('As pastas foram renomeadas com sucesso!', '✅ Concluído') 
+            #pyautogui.alert('As pastas foram renomeadas com sucesso!', '✅ Concluído') 
             
             caminhoProposta = os.path.join(self.diretorioPadraoDestino, nomeClienteRenomeado, nomeLocalRenomeado, nomeOportunidadeRenomeada, 'Proposta')
             return caminhoProposta, nomeDiretórioOportunidadadeRenomeada                   
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao renomear os diretórios: {e}', '❌ Erro')
-            exit()                    
+            exit()
+            
+    
