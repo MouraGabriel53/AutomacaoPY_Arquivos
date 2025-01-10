@@ -5,18 +5,18 @@ import shutil
 class FilesExistingLocal:
     def __init__(self, planilhaCustosOrigem, caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho):
         self.planilhaCustosOrigem = planilhaCustosOrigem
-        self.caminhoPropostaAddLocal = caminhoPropostaAddLocal
+        self.caminhoLocalSelecionado = caminhoPropostaAddLocal
         self.nomeOportunidadeAddRenomeadaSemCaminho = nomeOportunidadeAddRenomeadaSemCaminho
         
     def selectFilesLocal(self):
-        try: 
+        try:
             tipoProposta = pyautogui.prompt(
                 'Por favor, informe o tipo da proposta:\n[1] Assistência Técnica\n[2] Automação Básica\n[3] Automação Completa\n[4] Painéis\n[5] Revenda\n[6] TI', 
                 '❓ Tipo Proposta'
             )
             if not tipoProposta:
                 pyautogui.alert('O processo foi interrompido pelo usuário.', '❌ Erro')
-                exit() 
+                exit()
             
             match tipoProposta:
                 case '1':
@@ -39,8 +39,10 @@ class FilesExistingLocal:
             exit()
             
     def copyFilesLocal(self):
-        try:          
-            os.makedirs(os.path.dirname(self.caminhoLocalSelecionado), exist_ok=True)
+        try:
+            if not os.path.exists(self.propostaModeloOrigem) or not os.path.exists(self.planilhaCustosOrigem):
+                raise FileNotFoundError("Arquivos de origem não encontrados.")
+            os.makedirs(self.caminhoLocalSelecionado, exist_ok=True)
             self.nomePropostaModeloAntigoAdd = shutil.copy2(self.propostaModeloOrigem, self.caminhoLocalSelecionado)
             self.nomePlanilhaCustosAntigoAdd = shutil.copy2(self.planilhaCustosOrigem, self.caminhoLocalSelecionado)
             #pyautogui.alert('Os arquivos foram copiados com sucesso!', '✅ Concluído')
@@ -49,12 +51,13 @@ class FilesExistingLocal:
             exit()
 
     def renameFilesLocal(self):
-        try:  
+        try:
             nomePropostaModeloRenomeadaAdd = os.path.join(self.caminhoLocalSelecionado, f'{self.nomeOportunidadeAddRenomeadaSemCaminho} rev0.0.docx')
-            os.rename(self.nomePropostaModeloAntigoAdd, nomePropostaModeloRenomeadaAdd)
             nomePlanilhaCustosRenomeadaAdd = os.path.join(self.caminhoLocalSelecionado, f'{self.nomeOportunidadeAddRenomeadaSemCaminho} rev0.0.xlsx') 
-            os.rename(self.nomePlanilhaCustosAntigoAdd, nomePlanilhaCustosRenomeadaAdd)      
+            os.rename(self.nomePropostaModeloAntigoAdd, nomePropostaModeloRenomeadaAdd)
+            os.rename(self.nomePlanilhaCustosAntigoAdd, nomePlanilhaCustosRenomeadaAdd)
             #pyautogui.alert('Os arquivos foram renomeados com sucesso!', '✅ Concluído')
         except Exception as e:
             pyautogui.alert(f'Ocorreu um erro ao renomear os arquivos: {e}', '❌ Erro')
             exit()
+

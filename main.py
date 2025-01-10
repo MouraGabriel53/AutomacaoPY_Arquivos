@@ -34,7 +34,6 @@ def main():
         diretorioPadraoOrigem, diretorioPadraoDestino, diretorioPadraoLocalOrigem, diretorioPadraoOportunidadeOrigem = configFolders()
         folders = FoldersAdd(diretorioPadraoDestino, diretorioPadraoLocalOrigem)
         caminhoClienteSelecionado = folders.nameClientList()
-                
         respostaAddLocal = pyautogui.confirm('Deseja adicionar um novo Local?', '➕ Adicionar Local', buttons=['Sim', 'Não'])
         if not respostaAddLocal:
             pyautogui.alert('O processo foi interrompido pelo usuário.', '❌ Erro')
@@ -46,9 +45,8 @@ def main():
             files = FilesAdd(planilhaCustosOrigem, caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho)
             files.selectFilesAdd()
             files.copyFilesAdd()
-            files.renameFilesAdd()
-        if respostaAddLocal == 'Não':
-            exit()           
+            files.renameFilesAdd()           
+        if respostaAddLocal == 'Não':         
             folders = FoldersExistingLocal(caminhoClienteSelecionado, diretorioPadraoOportunidadeOrigem)
             folders.getLocalName()
             folders.addOportunity()
@@ -56,7 +54,6 @@ def main():
             planilhaCustosOrigem = configFiles()
             files = FilesExistingLocal(planilhaCustosOrigem, caminhoPropostaAddLocal, nomeOportunidadeAddRenomeadaSemCaminho)
             files.selectFilesLocal()
-            exit()
             files.copyFilesLocal()
             files.renameFilesLocal()
             exit()

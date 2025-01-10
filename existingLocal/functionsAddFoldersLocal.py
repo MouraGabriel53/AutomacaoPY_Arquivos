@@ -4,37 +4,34 @@ import shutil
 
 class FoldersExistingLocal():    
     def __init__(self, caminhoClienteSelecionado, diretorioPadraoOportunidadeOrigem):
-        self.diretorioPadraoOportunidadeOrigem = caminhoClienteSelecionado
+        self.caminhoClienteSelecionado = caminhoClienteSelecionado
         self. diretorioPadraoOportunidadeOrigem = diretorioPadraoOportunidadeOrigem
     
     def getLocalName(self):
-            try:
-                locais = [item for item in os.listdir(self.caminhoClienteSelecionado) if os.path.isdir(os.path.join(self.caminhoClienteSelecionado, item))]
-                if not locais:
-                    pyautogui.alert("Nenhum local encontrado.", '❌ Erro')
-                    return None
+        try:
+            locais = [item for item in os.listdir(self.caminhoClienteSelecionado) if os.path.isdir(os.path.join(self.caminhoClienteSelecionado, item))]
+            if not locais:
+                pyautogui.alert("Nenhum local encontrado.", '❌ Erro')
+                return None
 
-                if len(locais) == 1:
-                    self.localName = locais[0]
+            locaisEnumerados = [f'[{i+1}] {item}' for i, item in enumerate(locais)]
+            escolha = pyautogui.prompt('Escolha o Local:\n' + '\n'.join(locaisEnumerados), '❓ Nome Local')
+
+            if escolha and escolha.isdigit():
+                indice = int(escolha) - 1
+                if 0 <= indice < len(locais):
+                    localName = locais[indice]
                 else:
-                    locais_enumerados = [f"[{i+1}] {item}" for i, item in enumerate(locais)]
-                    escolha = pyautogui.prompt('Escolha o Local:\n' + '\n'.join(locais_enumerados), '❓ Nome Local')
-                    
-                    if escolha and escolha.isdigit():
-                        indice = int(escolha) - 1
-                        if 0 <= indice < len(locais):
-                            self.localName = locais[indice]
-                        else:
-                            pyautogui.alert("Escolha inválida.", '❌ Erro')
-                            return None
-                    else:
-                        pyautogui.alert("Escolha inválida.", '❌ Erro')
-                        return None
-                    
-                self.caminhoClienteLocalSelecionado = os.path.join(self.caminhoClienteSelecionado, self.localName)
-            except Exception as e:
-                pyautogui.alert(f"Ocorreu um erro ao buscar o nome do local: {e}", '❌ Erro')
-                exit()
+                    pyautogui.alert("Escolha inválida.", '❌ Erro')
+                    return None
+            else:
+                pyautogui.alert("Escolha inválida ou cancelada.", '❌ Erro')
+                return None
+
+            self.caminhoClienteLocalSelecionado = os.path.join(self.caminhoClienteSelecionado, localName)
+        except Exception as e:
+            pyautogui.alert(f"Ocorreu um erro ao buscar o nome do local: {e}", '❌ Erro')
+            exit()
                 
     def addOportunity(self):
         try:
