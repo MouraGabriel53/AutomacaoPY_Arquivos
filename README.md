@@ -1,6 +1,5 @@
 # 📂 Automação de Tarefas com Python
 
-## Índice
 <p align="center">
     <a href="#-descrição-do-projeto">Descrição do Projeto</a> |
     <a href="#-funcionalidades">Funcionalidades</a> |
