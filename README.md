@@ -1,7 +1,5 @@
 # 📂 Automação de Tarefas com Python
 
-Este projeto visa automatizar tarefas repetitivas utilizando Python, facilitando a criação de pastas, a cópia e movimentação de arquivos, e a interação com a interface gráfica do usuário. A automação busca otimizar o tempo e reduzir erros humanos, especialmente no gerenciamento de arquivos de clientes e cotações.
-
 ## Índice
 <p align="center">
     <a href="#-descrição-do-projeto">Descrição do Projeto</a> |
