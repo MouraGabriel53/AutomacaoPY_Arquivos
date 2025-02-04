@@ -8,7 +8,8 @@
 
 ## 📂 Descrição do Projeto
 
-Este projeto está sendo desenvolvido para automatizar tarefas repetitivas relacionadas à criação de pastas, cópia e movimentação de arquivos, além de interações com a interface gráfica do usuário. O objetivo principal é organizar arquivos de clientes em pastas específicas, facilitando o armazenamento e o gerenciamento de cotações. A automação reduz o tempo gasto em tarefas manuais e minimiza erros humanos no processo.
+Este projeto foi desenvolvido para automatizar tarefas repetitivas relacionadas à criação de pastas, cópia e movimentação de arquivos, além de interações com a interface gráfica do usuário. O objetivo principal é organizar arquivos de clientes em pastas específicas, facilitando o armazenamento e o gerenciamento de cotações. A automação reduz o tempo gasto em tarefas manuais e minimiza erros humanos no processo. 
+- 🆙 **Com esse projeto reduzi em 25% o tempo de criação das propostas.**
 
 ## ⚙️ Funcionalidades
 
@@ -16,13 +17,11 @@ Este projeto está sendo desenvolvido para automatizar tarefas repetitivas relac
 - **📄 Cópia e movimentação de arquivos**: Copia arquivos para as pastas correspondentes ou move-os diretamente.
 - **🖱️ Interação com a interface gráfica**: Automatiza cliques e digitação para interagir com aplicativos e sistemas.
 - **🔧 Personalização**: Permite configurar os caminhos das pastas de origem e destino.
-- **📝 Logs**: Registra as operações realizadas para facilitar o acompanhamento e a auditoria.
 
 ## 📚 Bibliotecas Utilizadas
 
 - **os**: Utilizada para interagir com o sistema operacional, permitindo a criação de pastas e a movimentação de arquivos.
 - **shutil**: Fornece uma interface de alto nível para operações de cópia e movimentação de arquivos.
 - **pyautogui**: Utilizada para automatizar interações com a interface gráfica do usuário, como cliques e digitação.
-- **logging**: Utilizada para registrar logs das operações realizadas, facilitando o acompanhamento e a auditoria do processo.
 
 Essas bibliotecas foram escolhidas por serem parte da biblioteca padrão do Python (exceto pyautogui), o que elimina a necessidade de instalar muitas dependências externas e simplifica a implementação do projeto.
