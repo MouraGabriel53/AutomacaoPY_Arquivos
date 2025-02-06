@@ -1,27 +1,28 @@
-# 📂 Automação de Tarefas com Python
+# 📂 Task Automation with Python
 
 <p align="center">
-    <a href="#-descrição-do-projeto">Descrição do Projeto</a> |
-    <a href="#-funcionalidades">Funcionalidades</a> |
-    <a href="#-bibliotecas-utilizadas">Bibliotecas Utilizadas</a>
+    <a href="#-project-description">Project Description</a> |
+    <a href="#-features">Features</a> |
+    <a href="#-libraries-used">Libraries Used</a>
 </p>
 
-## 📂 Descrição do Projeto
+## 📂 Project Description
 
-Este projeto foi desenvolvido para automatizar tarefas repetitivas relacionadas à criação de pastas, cópia e movimentação de arquivos, além de interações com a interface gráfica do usuário. O objetivo principal é organizar arquivos de clientes em pastas específicas, facilitando o armazenamento e o gerenciamento de cotações. A automação reduz o tempo gasto em tarefas manuais e minimiza erros humanos no processo. 
-- 🆙 **Com esse projeto reduzi em 25% o tempo de criação das propostas.**
+This project was developed to automate repetitive tasks related to folder creation, file copying and moving, as well as interactions with the graphical user interface. The main goal is to organize client files into specific folders, making it easier to store and manage quotes. The automation reduces the time spent on manual tasks and minimizes human errors in the process.
+- 🆙 **With this project, I reduced the time to create proposals by 25%.**
 
-## ⚙️ Funcionalidades
+## ⚙️ Features
 
-- **📁 Criação automática de pastas**: Gera pastas com base nos nomes dos clientes ou outros critérios definidos.
-- **📄 Cópia e movimentação de arquivos**: Copia arquivos para as pastas correspondentes ou move-os diretamente.
-- **🖱️ Interação com a interface gráfica**: Automatiza cliques e digitação para interagir com aplicativos e sistemas.
-- **🔧 Personalização**: Permite configurar os caminhos das pastas de origem e destino.
+- **📁 Automatic folder creation**: Creates folders based on client names or other defined criteria.
+- **📄 File copying and moving**: Copies files to the corresponding folders or moves them directly.
+- **🖱️ GUI interaction**: Automates clicks and typing to interact with applications and systems.
+- **🔧 Customization**: Allows configuring the paths of source and destination folders.
 
-## 📚 Bibliotecas Utilizadas
+## 📚 Libraries Used
 
-- **os**: Utilizada para interagir com o sistema operacional, permitindo a criação de pastas e a movimentação de arquivos.
-- **shutil**: Fornece uma interface de alto nível para operações de cópia e movimentação de arquivos.
-- **pyautogui**: Utilizada para automatizar interações com a interface gráfica do usuário, como cliques e digitação.
+- **os**: Used to interact with the operating system, allowing folder creation and file movement.
+- **shutil**: Provides a high-level interface for file copying and moving operations.
+- **pyautogui**: Used to automate interactions with the graphical user interface, such as clicks and typing.
 
-Essas bibliotecas foram escolhidas por serem parte da biblioteca padrão do Python (exceto pyautogui), o que elimina a necessidade de instalar muitas dependências externas e simplifica a implementação do projeto.
+These libraries were chosen because they are part of Python's standard library (except pyautogui), eliminating the need to install many external dependencies and simplifying the project implementation.
+---
