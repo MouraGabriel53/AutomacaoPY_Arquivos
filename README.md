@@ -1,4 +1,4 @@
-# 📂 Task Automation with Python
+<h1 align="center">📂 Task Automation with Python</h1>
 
 <p align="center">
     <a href="#-project-description">Project Description</a> |
@@ -25,4 +25,5 @@ This project was developed to automate repetitive tasks related to folder creati
 - **pyautogui**: Used to automate interactions with the graphical user interface, such as clicks and typing.
 
 These libraries were chosen because they are part of Python's standard library (except pyautogui), eliminating the need to install many external dependencies and simplifying the project implementation.
+
 ---
