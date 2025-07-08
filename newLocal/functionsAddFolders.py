@@ -69,7 +69,7 @@ class FoldersAdd:
             os.rename(nomeLocalAddAntigo, nomeLocalAddRenomeado)
 
             # Renomeia a oportunidade 
-            nomeOportunidadeAddAntiga = os.path.join(nomeLocalAddRenomeado, 'Oano_mes_xx_Descrição')
+            nomeOportunidadeAddAntiga = os.path.join(nomeLocalAddRenomeado, 'O25xxxx')
             nomeOportunidadeAddRenomeada = pyautogui.prompt('Por favor, informe o nome da Oportunidade:', '❓ Nome Oportunidade')
             nomeOportunidadeAddRenomeadaSemCaminho = nomeOportunidadeAddRenomeada
             if not nomeOportunidadeAddRenomeada:

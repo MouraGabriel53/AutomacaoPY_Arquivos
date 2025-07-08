@@ -53,7 +53,7 @@ class FoldersExistingLocal():
                 pyautogui.alert(f'O caminho {self.caminhoOportunidadeAdicionada} não existe.', '❌ Erro')
                 exit()
             # Renomeia a oportunidade 
-            nomeOportunidadeAddAntiga = os.path.join(self.caminhoOportunidadeAdicionada, 'Oano_mes_xx_Descrição')
+            nomeOportunidadeAddAntiga = os.path.join(self.caminhoOportunidadeAdicionada, 'O25xxxx')
             nomeOportunidadeAddRenomeada = pyautogui.prompt('Por favor, informe o nome da Oportunidade:', '❓ Nome Oportunidade')
             nomeOportunidadeAddRenomeadaSemCaminho = nomeOportunidadeAddRenomeada
             if not nomeOportunidadeAddRenomeada:

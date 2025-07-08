@@ -1,4 +1,4 @@
-import pyautogui
+import pyautogui 
 import os
 import shutil
 
@@ -49,7 +49,7 @@ class Folders:
             os.rename(nomeLocalAntigo, nomeLocalRenomeado)
 
             # Renomeia a oportunidade
-            nomeOportunidadeAntiga = os.path.join(nomeLocalRenomeado, 'Oano_mes_xx_Descrição')
+            nomeOportunidadeAntiga = os.path.join(nomeLocalRenomeado, 'O25xxxx')
             nomeOportunidadeRenomeada = pyautogui.prompt('Por favor, informe o nome da Oportunidade:', '❓ Nome Oportunidade')
             nomeDiretórioOportunidadadeRenomeada = nomeOportunidadeRenomeada
             if not nomeOportunidadeRenomeada:
